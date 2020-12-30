@@ -1,8 +1,13 @@
 {
-  "channel": "lfg-roles",
+  "channel": "get-faculty-roles",
   "roles": {
-    "xbox": "Xbox",
-    "ps4": "PS4",
-    "steam": "Steam"
+    "artanddesign": "🎨 Art/Design",
+    "artsandsocialsciences": "👵🏽 Art/Social",
+    "builtenvironment": "🔨 Built Environment",
+    "business": "💹 Business",
+    "engineering": "🔧 Engineering",
+    "law": "⚖ THE LAW",
+    "medicine": "🩺 Medicine",
+    "science": "🔬 Science"
   }
 }
