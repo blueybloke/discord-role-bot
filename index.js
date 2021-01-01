@@ -62,7 +62,7 @@ async function addRole({ message, _emoji }, user) {
 
   const { guild } = message;
 
-  const member = await guild.members.fetch(user);
+  const member = message.guild.member(user);
   const role = guild.roles.find(
     (role) => role.name === config.roles[_emoji.name]
   );
@@ -104,7 +104,7 @@ async function removeRole({ message, _emoji }, user) {
 
   const { guild } = message;
 
-  const member = await guild.members.fetch(user);
+  const member = message.guild.member(user);
   const role = guild.roles.find(
     (role) => role.name === config.roles[_emoji.name]
   );
