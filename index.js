@@ -33,9 +33,11 @@ async function onReady() {
     return;
   }
 
-  config.message_id = channel.messages.first().id;
+  config.message_id = channel.messages.last().id;
 
-  console.log(`Watching message '${config.message_id}' for reactions...`);
+  console.log(
+    `Watching message '${config.message_id}' in channel '${channel.name}' for reactions...`
+  );
 }
 
 /**
@@ -62,22 +64,23 @@ async function addRole({ message, _emoji }, user) {
 
   const { guild } = message;
 
-  const member = message.guild.member(user);
-  const role = guild.roles.find(
-    (role) => role.name === config.roles[_emoji.name]
-  );
+  message.guild.members.fetch(user).then((member) => {
+    const role = guild.roles.find(
+      (role) => role.name === config.roles[_emoji.name]
+    );
 
-  if (!role) {
-    console.error(`Role not found for '${_emoji.name}'`);
-    return;
-  }
+    if (!role) {
+      console.error(`Role not found for '${_emoji.name}'`);
+      return;
+    }
 
-  try {
-    member.roles.add(role.id);
-  } catch (err) {
-    console.error('Error adding role', err);
-    return;
-  }
+    try {
+      member.roles.add(role.id);
+    } catch (err) {
+      console.error('Error adding role', err);
+      return;
+    }
+  });
 }
 
 /**
@@ -104,20 +107,21 @@ async function removeRole({ message, _emoji }, user) {
 
   const { guild } = message;
 
-  const member = message.guild.member(user);
-  const role = guild.roles.find(
-    (role) => role.name === config.roles[_emoji.name]
-  );
+  message.guild.members.fetch(user).then((member) => {
+    const role = guild.roles.find(
+      (role) => role.name === config.roles[_emoji.name]
+    );
 
-  if (!role) {
-    console.error(`Role not found for '${_emoji.name}'`);
-    return;
-  }
+    if (!role) {
+      console.error(`Role not found for '${_emoji.name}'`);
+      return;
+    }
 
-  try {
-    member.roles.remove(role.id);
-  } catch (err) {
-    console.error('Error removing role', err);
-    return;
-  }
+    try {
+      member.roles.remove(role.id);
+    } catch (err) {
+      console.error('Error removing role', err);
+      return;
+    }
+  });
 }
