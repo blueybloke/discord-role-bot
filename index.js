@@ -8,7 +8,7 @@ const config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
 
 // the client is created with the partial message option to capture events for uncached messages
 // if this options is not set, the bot may not be aware of the message that it should be watching
-const client = new Client({ partials: ['MESSAGE'] });
+const client = new Client({ partials: ['MESSAGE', 'GUILD_MEMBER', 'CHANNEL'] });
 
 client.on('ready', onReady);
 client.on('messageReactionAdd', addRole);
@@ -76,6 +76,7 @@ async function addRole({ message, _emoji }, user) {
 
     try {
       member.roles.add(role.id);
+      console.log(`[ADD] Gave user ${user.tag} the ${role.name} role!`);
     } catch (err) {
       console.error('Error adding role', err);
       return;
@@ -119,6 +120,7 @@ async function removeRole({ message, _emoji }, user) {
 
     try {
       member.roles.remove(role.id);
+      console.log(`[REMOVE] Removed role ${role.name} from user ${user.tag}!`);
     } catch (err) {
       console.error('Error removing role', err);
       return;
