@@ -1,13 +1,13 @@
 {
   "channel": "get-faculty-roles",
   "roles": {
-    "artanddesign": "🎨 Art/Design",
-    "artsandsocialsciences": "👵🏽 Art/Social",
-    "builtenvironment": "🔨 Built Environment",
-    "business": "💹 Business",
-    "engineering": "🔧 Engineering",
-    "law": "⚖ THE LAW",
-    "medicine": "🩺 Medicine",
-    "science": "🔬 Science"
+    "artanddesign": "Art/Design",
+    "artsandsocialsciences": "👵Art/Social",
+    "builtenvironment": "Built Environment",
+    "business": "Business",
+    "engineering": "Engineering",
+    "law": "THE LAW",
+    "medicine": "Medicine",
+    "science": "Science"
   }
 }
