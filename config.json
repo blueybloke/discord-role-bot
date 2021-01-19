@@ -2,7 +2,7 @@
   "channel": "get-faculty-roles",
   "roles": {
     "artanddesign": "Art/Design",
-    "artsandsocialsciences": "👵Art/Social",
+    "artsandsocialsciences": "Art/Social",
     "builtenvironment": "Built Environment",
     "business": "Business",
     "engineering": "Engineering",
